@@ -8,7 +8,7 @@
 
 * [Mbed CLI](https://docs.mbed.com/docs/mbed-os-handbook/en/latest/dev_tools/cli/#installing-mbed-cli) - Download and install mbed CLI.
 
-## Step 2: Import startup project
+## Step 2: Import InterruptIn project
 
 Import InterruptIn-Example project from GitHub.
 
@@ -29,7 +29,7 @@ Example:
 
 Navigate into the project folder and execute the following command:
 ```
-cd mbed-xmc-startup.git/
+cd InterruptIn-Example.git/
 mbed compile -m XMC_4500_RELAX_KIT -t GCC_ARM
 ```
 mbed creates a BUID directory where you can find the executables (bin, elf, hex ...).
@@ -42,7 +42,7 @@ mbed creates a BUID directory where you can find the executables (bin, elf, hex 
 $ JLinkExe
 J-LINK> device xmc4500-1024
 J-LINK> h
-J-Link> loadfile mbed-xmc-startup.git.hex
+J-Link> loadfile InterruptIn-Example.git.hex
 J-Link> r
 J-Link> g
 ```
