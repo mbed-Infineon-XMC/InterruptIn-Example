@@ -1,7 +1,7 @@
 # InterruptIn Example
 
-The following guide describes how to use InterruptIn with the XMC4500 Relax Kit.
-SW2(P1_15) is used in this example.
+* The following guide describes how to use InterruptIn with the XMC4500 Relax Kit.
+* SW2(P1_15) is used in this example.
 
 ## Step 1: Download mbed CLI
 
