@@ -1,6 +1,7 @@
-# Mbed for the Infineon XMC family
+# InterruptIn Example
 
-The following guide describes the steps to run the first mbed Hello World program on the XMC 4500 Relax Kit board from Infineon.
+The following guide describes how to use InterruptIn with the XMC4500 Relax Kit.
+SW2(P1_15) is used in this example.
 
 ## Step 1: Download mbed CLI
 
@@ -8,10 +9,10 @@ The following guide describes the steps to run the first mbed Hello World progra
 
 ## Step 2: Import startup project
 
-Import mbed startup project from GitHub.
+Import InterruptIn-Example project from GitHub.
 
 ```
-mbed import https://github.com/mbed-Infineon-XMC/mbed-xmc-startup.git
+mbed import https://github.com/mbed-Infineon-XMC/InterruptIn-Example.git
 ```
 
 ## Step 3: Install ARM GCC toolchain
@@ -48,18 +49,4 @@ J-Link> g
 
 ## Step 6: If successful..
 
-When everything has gone well, LED1 will blink and LED2 switched off if Button 2 is pressed.
-Futhermore, UART on Pin P1_5(TX) and P1_4(RX) operates in loopback modus. (mode = 9600 8N1)
-
-## Step 7: Eclipse IDE & debugging
-
-If you want to compile and debug the project with eclipse follow this guidline:
-
-* First export and create a makefile for the eclipse platform.
-```
-mbed export -i eclipse_gcc_arm -m XMC_4500_RELAX_KIT
-```
-* Install Eclipse C/C++ IDE
-* [Install Plugins](https://github.com/mhorauer/XMC4500-Barebone-Projects/blob/master/Setup/plugins.asciidoc) - The following tutorial could be helpful.
-
-* [Debugging with eclipse](https://docs.mbed.com/docs/mbed-os-handbook/en/5.3/debugging/debugging_eclipse_pyocd/) - Also take a look to the mbed debuging guidlines.
+When everything has gone well, LED2 is switched on when rising edge detected and switched off if falling edge will be detected.
