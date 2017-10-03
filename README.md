@@ -2,6 +2,7 @@
 
 * The following guide describes how to use InterruptIn with the XMC4500 Relax Kit.
 * SW2(P1_15) is used in this example.
+* Rising edge detected => switch-on LED2 / Falling edge detected => switch-off LED2
 
 ## Step 1: Download mbed CLI
 
@@ -46,7 +47,3 @@ J-Link> r
 J-Link> g
 ```
 * Choose SWD, 4000kHz as interface settings!!
-
-## Step 6: If successful..
-
-When everything has gone well, LED2 is switched on when rising edge detected and switched off if falling edge will be detected.
