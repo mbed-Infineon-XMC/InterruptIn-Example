@@ -21,7 +21,7 @@
 /******************************************************************** Globals */
 InterruptIn button(SW2);
 DigitalOut flash(LED1);
-DigitalOut led(LED2);
+DigitalOut led(LED2, 1);
 
 /****************************************************************** Callbacks */
 
