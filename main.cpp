@@ -21,6 +21,7 @@
 /******************************************************************** Globals */
 InterruptIn sw(SW2);
 DigitalOut led1(LED1);
+Serial device(P0_5, P0_4); // tx, rx
 
 /****************************************************************** Callbacks */
 
@@ -37,6 +38,7 @@ void rise_handler(void) {
  * Callback if falling edge detected
  */
 void fall_handler(void) {
+    device.printf("fall_handler in context %p\r\n", Thread::gettid());
     // Toggle LED
     led1 = !led1;
 }
@@ -50,6 +52,7 @@ int main() {
 
     // Request the shared queue
     EventQueue *queue = mbed_event_queue();
+    device.printf("Starting in context %p\r\n", Thread::gettid());
 
     // The 'rise' handler will execute in IRQ context
     sw.rise(rise_handler);
