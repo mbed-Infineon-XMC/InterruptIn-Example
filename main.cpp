@@ -19,24 +19,26 @@
 #include "rtos.h"
 
 /******************************************************************** Globals */
-InterruptIn button(SW2);
-DigitalOut flash(LED1);
-DigitalOut led(LED2, 1);
+InterruptIn sw(SW2);
+DigitalOut led1(LED1);
 
 /****************************************************************** Callbacks */
 
 /**
  * Callback if rising edge detected
  */
-void rise() {
-    led.write(1);
+void rise_handler(void) {
+    // Toggle LED
+    led1 = !led1;
 }
+
 
 /**
  * Callback if falling edge detected
  */
-void fall() {
-    led.write(0);
+void fall_handler(void) {
+    // Toggle LED
+    led1 = !led1;
 }
 
 /****************************************************************** Functions */
@@ -45,15 +47,14 @@ void fall() {
  * Main Function
  */
 int main() {
-    /* Attach rising & falling callback functions */
-    button.rise(&rise);
-    button.fall(&fall);
 
-    /* Flash LED1 periodically */
-    while(1) {
-        flash = !flash;
-        wait(0.25);
-    }
+    // Request the shared queue
+    EventQueue *queue = mbed_event_queue();
+
+    // The 'rise' handler will execute in IRQ context
+    sw.rise(rise_handler);
+    // The 'fall' handler will execute in the context of the shared queue thread
+    sw.fall(queue->event(fall_handler));
 }
 
 /*EOF*/
